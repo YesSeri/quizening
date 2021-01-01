@@ -6,6 +6,7 @@ import { fetchQuestions } from './API';
 import { QuestionState, Difficulty } from './API';
 // CSS
 import { GlobalStyle } from './App.styles';
+import { Wrapper } from './App.styles';
 
 export type AnswerObject = {
 	question: string;
@@ -48,7 +49,6 @@ const App = () => {
 				correctAnswer,
 			};
 			setUserAnswers((prev) => [...prev, answerObject]);
-			console.log(userAnswers);
 		}
 	};
 	const nextQuestion = () => {
@@ -63,8 +63,7 @@ const App = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<div className="App">
-				Quiz
+			<Wrapper>
 				<h1>The Quizening</h1>
 				{gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
 					<button className="start" onClick={startTrivia}>
@@ -91,7 +90,7 @@ const App = () => {
 						Next Question
 					</button>
 				) : null}
-			</div>
+			</Wrapper>
 		</>
 	);
 };
